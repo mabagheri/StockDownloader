@@ -9,8 +9,8 @@ import datetime
 @st.cache_data
 def load_ticker_list(option):
     if option == "S&P/TSX":
-        ticker_list = ["^GSPTSE",]
-    if option == "Canadian Stocks":
+        ticker_list = ["^GSPTSE", "HD"]
+    elif option == "Canadian Stocks":
         return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
     elif option == "US Stocks":
         ticker_list = ['AAPL', 'HD', 'MSFT']
