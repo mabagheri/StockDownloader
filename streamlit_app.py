@@ -8,14 +8,14 @@ import datetime
 # Load predefined stock lists
 @st.cache_data
 def load_ticker_list(option):
-    if option == "TSX index":
-        ticker_list = ["^GSPTSE", "HD"]
+    if option == "TSX index": 
+        return ["^GSPTSE",]
     elif option == "Canadian Stocks":
         return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
     elif option == "US Stocks":
         ticker_list = ['AAPL', 'HD', 'MSFT']
         return ticker_list # pd.read_csv("us_stocks.csv")["Ticker"].dropna().unique().tolist()
-    return ["^GSPTSE",]
+    return []
 
 # Function to fetch data
 def fetch_data(tickers, start_date, end_date):
