@@ -9,7 +9,7 @@ import os
 def load_ticker_list(option):
     if option == "Canadian Stocks":
         ticker_list = ['RY.TO', 'TD.to']
-        return ticker_list # pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
+        return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
     elif option == "US Stocks":
         ticker_list = ['AAPL', 'HD', 'MSFT']
         return ticker_list # pd.read_csv("us_stocks.csv")["Ticker"].dropna().unique().tolist()
