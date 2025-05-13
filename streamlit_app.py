@@ -3,6 +3,7 @@ import yfinance as yf
 import pandas as pd
 import zipfile
 import os
+import datetime
 
 # Load predefined stock lists
 @st.cache_data
@@ -38,7 +39,7 @@ tickers = load_ticker_list(market_choice)
 st.write(f"Number of tickers loaded: {len(tickers)}")
 
 # Let user pick a date range
-start_date = st.date_input("Start Date")
+start_date = st.date_input("Start Date", datetime.date(2010, 1, 1))
 end_date = st.date_input("End Date")
 
 # Fetch Data
