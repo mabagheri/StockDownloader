@@ -8,7 +8,7 @@ import datetime
 # Load predefined stock lists
 @st.cache_data
 def load_ticker_list(option):
-    if option == "S&P/TSX":
+    if option == "TSX_index":
         ticker_list = ["^GSPTSE", "HD"]
     elif option == "Canadian Stocks":
         return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
@@ -32,7 +32,7 @@ def fetch_data(tickers, start_date, end_date):
 st.title("Stock Data Downloader")
 
 # Let user choose the market
-market_choice = st.selectbox("Select Market", ["S&P/TSX", "Canadian Stocks", "US Stocks"])
+market_choice = st.selectbox("Select Market", ["TSX_index", "Canadian Stocks", "US Stocks"])
 
 # Load tickers based on choice
 tickers = load_ticker_list(market_choice)
