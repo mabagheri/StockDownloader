@@ -67,7 +67,7 @@ def fetch_data_parallel(tickers, start_date, end_date):
     status_text.text("✅ All downloads finished!")
     return data_dict
 
-st.title("Stock Data Downloader")
+st.title("Stock Data Downloader!")
 # Let user choose the market
 market_choice = st.selectbox("Select Market", ["TSX index", "Canadian Stocks", "US Stocks"])
 # Load tickers based on choice
