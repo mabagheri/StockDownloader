@@ -43,7 +43,7 @@ def fetch_data(tickers, start_date, end_date):
 
 st.title("Stock Data Downloader")
 # Let the user choose the market
-market_choice = st.selectbox("Select Market", ["TSX index", "Canadian Stocks", "US Stocks"])
+market_choice = st.selectbox("Select Market", ["TSX index", "Canadian", "US"])
 # Load tickers based on choice
 tickers = load_ticker_list(market_choice)
 st.write(f"Number of tickers loaded: {len(tickers)}")
