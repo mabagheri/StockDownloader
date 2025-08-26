@@ -41,7 +41,7 @@ def fetch_data(tickers, start_date, end_date):
     return data_dict
 
 
-st.title("Stock Data Downloader")
+st.title("Stock Data Downloader!")
 # Let the user choose the market
 market_choice = st.selectbox("Select Market", ["TSX index", "Canadian", "US"])
 # Load tickers based on choice
