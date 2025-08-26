@@ -83,7 +83,7 @@ end_date = st.date_input("End Date", datetime.date.today(), min_value=datetime.d
 # Fetch Data
 if st.button("Fetch Data"):
     if tickers and start_date and end_date:
-        stock_data = fetch_data_parallel(tickers, start_date, end_date)
+        stock_data = fetch_data(tickers, start_date, end_date)
         if stock_data:
             st.session_state["stock_data"] = stock_data
             st.success("Data fetched successfully!")
