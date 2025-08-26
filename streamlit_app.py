@@ -41,6 +41,8 @@ def fetch_data(tickers, start_date, end_date):
 
 
 def fetch_data_parallel(tickers, start_date, end_date):
+    status_text.text("start parallel downloading!")
+
     data_dict = {}
     progress_bar = st.progress(0)
     status_text = st.empty()
