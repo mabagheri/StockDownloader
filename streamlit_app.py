@@ -5,6 +5,7 @@ import pandas as pd
 import zipfile
 import os
 import datetime
+
 # Load predefined stock lists
 @st.cache_data
 def load_ticker_list(option):
@@ -40,35 +41,8 @@ def fetch_data(tickers, start_date, end_date):
     return data_dict
 
 
-def fetch_data_parallel(tickers, start_date, end_date):
-    data_dict = {}
-    progress_bar = st.progress(0)
-    status_text = st.empty()
-    total = len(tickers)
-
-    completed = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:  # adjust workers
-        futures = {executor.submit(fetch_single_ticker, ticker, start_date, end_date): ticker for ticker in tickers}
-        
-        for future in concurrent.futures.as_completed(futures):
-            ticker = futures[future]
-            result = future.result()
-            if result:
-                t, df = result
-                if isinstance(df, str):  # error message
-                    st.error(f"{t}: {df}")
-                elif df is not None:
-                    data_dict[t] = df
-
-            completed += 1
-            progress_bar.progress(completed / total)
-            status_text.text(f"Completed {completed}/{total} ({ticker})")
-
-    status_text.text("✅ All downloads finished!")
-    return data_dict
-
 st.title("Stock Data Downloader")
-# Let user choose the market
+# Let the user choose the market
 market_choice = st.selectbox("Select Market", ["TSX index", "Canadian Stocks", "US Stocks"])
 # Load tickers based on choice
 tickers = load_ticker_list(market_choice)
