@@ -78,19 +78,17 @@ st.write(f"Number of tickers loaded: {len(tickers)}")
 start_date = st.date_input("Start Date", datetime.date(2010, 1, 1), min_value=datetime.date(2010, 1, 1), max_value=datetime.date.today())
 end_date = st.date_input("End Date", datetime.date.today(), min_value=datetime.date(2010, 1, 1), max_value=datetime.date.today())
 
-
-# Fetch button
+# Fetch Data
 if st.button("Fetch Data"):
     if tickers and start_date and end_date:
-        stock_data = fetch_data(tickers, start_date, end_date)  # Previusly: fetch_data(...)
+        stock_data = fetch_data(tickers, start_date, end_date)
         if stock_data:
             st.session_state["stock_data"] = stock_data
-            st.success("Data fetched and updated successfully!")
+            st.success("Data fetched successfully!")
         else:
             st.error("No data retrieved.")
     else:
-        st.error("Please provide valid inputs.")
-        
+        st.error("Missing inputs.")
 # Save CSVs and offer ZIP download
 if "stock_data" in st.session_state:
     if st.button("Save CSVs"):
