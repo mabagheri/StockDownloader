@@ -1,4 +1,3 @@
-import concurrent.futures
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -11,9 +10,9 @@ import datetime
 def load_ticker_list(option):
     if option == "TSX index": 
         return ["^GSPTSE",]
-    elif option == "Canadian Stocks":
+    elif option == "Canadian":
         return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist()
-    elif option == "US Stocks":
+    elif option == "US":
         ticker_list = ['AAPL', 'HD', 'MSFT']
         return ticker_list # pd.read_csv("us_stocks.csv")["Ticker"].dropna().unique().tolist()
     return []
