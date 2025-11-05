@@ -8,7 +8,8 @@ import datetime
 # Load predefined stock lists
 @st.cache_data
 def load_ticker_list(option):
-    indices = ["SPY", "QQQ", "XIC", "XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLK", "XLB", "XLRE", "XLU"]
+    indices = ["SPY", "QQQ", "XIC", 
+                "XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLK", "XLB", "XLRE", "XLU"]
     if option == "Indices": 
         return indices # ["^GSPTSE",]
     elif option == "Canadian Stocks":
@@ -28,10 +29,10 @@ def fetch_data(tickers, start_date, end_date):
         try:
             status_text.text(f"Downloading {ticker} ({i}/{len(tickers)}) ...")
             df = yf.download(ticker, start=start_date, end=end_date)
-            print(df.head(5))
-            # df = df.iloc[2:, :].reset_index(drop=true)
-            # df.columns = ["Date", "Close", "High", "Low", "Open", "Volume"]
-            # df[["Close", "High", "Low", "Open"]] = df[["Close", "High", "Low", "Open"]].round(2)
+            st.write(df.head(5))
+            df = df.iloc[2:, :].reset_index(drop=True)
+            df.columns = ["Date", "Close", "High", "Low", "Open", "Volume"]
+            df[["Close", "High", "Low", "Open"]] = df[["Close", "High", "Low", "Open"]].round(2)
             if not df.empty:
                 data_dict[ticker] = df
         
