@@ -9,7 +9,7 @@ import datetime
 @st.cache_data
 def load_ticker_list(option):
     indices = ["SPY", "QQQ", "XIC", "XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLK", "XLB", "XLRE", "XLU"]
-    if option == "indices": 
+    if option == "Indices": 
         return indices # ["^GSPTSE",]
     elif option == "Canadian Stocks":
         return pd.read_csv("canadian_stocks.csv")["Ticker"].dropna().unique().tolist() + indices
@@ -72,7 +72,7 @@ def fetch_data_parallel(tickers, start_date, end_date):
 
 st.title("Stock Data Downloader!")
 # Let user choose the market
-market_choice = st.selectbox("Select Market", ["TSX index", "Canadian Stocks", "US Stocks"])
+market_choice = st.selectbox("Select Market", ["Incides", "Canadian Stocks", "US Stocks"])
 # Load tickers based on choice
 tickers = load_ticker_list(market_choice)
 st.write(f"Number of tickers loaded: {len(tickers)}")
