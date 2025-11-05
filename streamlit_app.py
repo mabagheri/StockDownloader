@@ -72,7 +72,7 @@ def fetch_data_parallel(tickers, start_date, end_date):
 
 st.title("Stock Data Downloader!")
 # Let user choose the market
-market_choice = st.selectbox("Select Market", ["Incides", "Canadian Stocks", "US Stocks"])
+market_choice = st.selectbox("Select Market", ["Indices", "Canadian Stocks", "US Stocks"])
 # Load tickers based on choice
 tickers = load_ticker_list(market_choice)
 st.write(f"Number of tickers loaded: {len(tickers)}")
