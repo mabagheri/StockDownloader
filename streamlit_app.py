@@ -8,7 +8,7 @@ import datetime
 # Load predefined stock lists
 @st.cache_data
 def load_ticker_list(option):
-    
+    indices = ["SPY", "QQQ", "XIC", "XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLK", "XLB", "XLRE", "XLU"]
     if option == "indices": 
         return indices # ["^GSPTSE",]
     elif option == "Canadian Stocks":
