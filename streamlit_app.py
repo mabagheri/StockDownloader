@@ -30,7 +30,7 @@ def fetch_data(tickers, start_date, end_date):
             status_text.text(f"Downloading {ticker} ({i}/{len(tickers)}) ...")
             df = yf.download(ticker, start=start_date, end=end_date)
             st.write(df.head(5))
-            df = df.iloc[2:, :].reset_index(drop=False)
+            df = df.iloc[:, :].reset_index(drop=False)
             st.write(df.head(5))
             df.columns = ["Date", "Close", "High", "Low", "Open", "Volume"]
             st.write(df.head(5))
@@ -106,7 +106,7 @@ if "stock_data" in st.session_state:
         with zipfile.ZipFile(zip_filename, 'w') as zipf:
             for ticker, df in st.session_state["stock_data"].items():
                 csv_filename = f"{ticker}.csv"
-                df.to_csv(csv_filename)
+                df.to_csv(csv_filename, index=False)
                 zipf.write(csv_filename)
                 os.remove(csv_filename)  # Clean up
         with open(zip_filename, "rb") as file:
