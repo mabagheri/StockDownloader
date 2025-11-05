@@ -32,8 +32,8 @@ def fetch_data(tickers, start_date, end_date):
             st.write(df.head(5))
             df = df.iloc[2:, :].reset_index(drop=True)
             st.write(df.head(5))
-            df.columns = ["Close", "High", "Low", "Open", "Volume"]
-            st.write(df.head(5))
+            # df.columns = ["Close", "High", "Low", "Open", "Volume"]
+            # st.write(df.head(5))
             df[["Close", "High", "Low", "Open"]] = df[["Close", "High", "Low", "Open"]].round(2)
             if not df.empty:
                 data_dict[ticker] = df
