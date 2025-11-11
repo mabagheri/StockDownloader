@@ -29,11 +29,11 @@ def fetch_data(tickers, start_date, end_date):
         try:
             status_text.text(f"Downloading {ticker} ({i}/{len(tickers)}) ...")
             df = yf.download(ticker, start=start_date, end=end_date)
-            st.write(df.head(5))
+            # st.write(df.head(5))
             df = df.iloc[:, :].reset_index(drop=False)
-            st.write(df.head(5))
+            # st.write(df.head(5))
             df.columns = ["Date", "Close", "High", "Low", "Open", "Volume"]
-            st.write(df.head(5))
+            # st.write(df.head(5))
             df[["Close", "High", "Low", "Open"]] = df[["Close", "High", "Low", "Open"]].round(2)
             if not df.empty:
                 data_dict[ticker] = df
